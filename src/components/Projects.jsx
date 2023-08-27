@@ -32,18 +32,18 @@ const Projects = () => {
     return (
         <div className='flex flex-col items-center'>
         <div >
-            <h1 className='text-orange-500 underline text-2xl decoration-orange-400 mb-2'>Завършени обекти:</h1>
+            <h1 className='text-orange-500 underline text-2xl decoration-orange-400 mb-2 -mt-4'>Завършени обекти:</h1>
         </div>
   {/* BIG PHOTO PREVIEW */ }
-    <div className='w-100% md:w-5/12 flex flex-row'>
+    <div className='w-full md:w-5/12 flex flex-row'>
         <div className='w-full relative'>
-            {/* <MdArrowBackIos className='absolute top-1/2 text-orange-500 left-0.5 ' size={35} /> */}
-            <img className='object-contain w-full max-h-[245px] md:max-h-[350px] lg:max-h-[450px]' src={currentHouse}></img>
-            {/* <MdArrowForwardIos className='absolute top-1/2 text-orange-500 right-0.5' size={35} /> */}
+           
+            <img className='object-contain w-full md:max-h-[350px] lg:max-h-[450px]' src={currentHouse}></img>
+           
         </div>
     </div>
     {/* PHOTO GALLERY */ }
-  <div className='text-md'>
+  <div className='text-md mt-2 mb-2'>
       <p>{(houseFrom + 1 === houses.length ) ? 'Обект' : 'Обекти' } номер {houseFrom + 1} до {(houseFrom + 1 === houses.length ) ? houseFrom + 1 :houseTo}</p>
     </div>
   <div className='w-full mt-1  flex flex-row justify-center items-center'>
