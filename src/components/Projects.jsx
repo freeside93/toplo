@@ -8,6 +8,7 @@ import house6 from '../images/house6.jpg'
 import house7 from '../images/house7.jpg'
 import house8 from '../images/house8.jpg'
 import house9 from '../images/house9.jpg'
+import { motion,AnimatePresence } from "framer-motion"
 
 import { MdArrowBackIos } from 'react-icons/md'
 import { MdArrowForwardIos } from 'react-icons/md'
@@ -18,6 +19,34 @@ const Projects = () => {
   const [currentHouse, setCurrentHouse] = useState(houses[0])
   const [houseFrom, setHouseFrom] = useState(0)
   const [houseTo, setHouseTo] = useState(3)
+  const [showNewHouse, setShowNewHouse] = useState(true)
+  const [animate3Houses, setAnimate3Houses] = useState(true)
+
+  function setTrueHouse(){
+    setShowNewHouse((prevState)=>{
+      setShowNewHouse(!prevState)
+    })
+  }
+  function animateHouse(){   
+    setShowNewHouse((prevState) =>{
+      setShowNewHouse(false)
+    })
+    console.log(showNewHouse)
+    setTimeout(setTrueHouse, 50)
+    
+  }
+  function setTheRightHouses(){
+    setAnimate3Houses((prevState)=>
+    setAnimate3Houses(!prevState)
+    )
+  }
+  function animatethe3Houses(){
+    setAnimate3Houses(false)
+              console.log('animate 3 houses')
+              console.log(animate3Houses)
+              setTimeout(setTheRightHouses, 50)
+              console.log(animate3Houses)
+  }
 
   function handleRightArrowClick() {
     setHouseFrom(prevValues => prevValues + 3)
@@ -35,10 +64,17 @@ const Projects = () => {
         <h1 className=' text-2xl b-2 -mt-3  mb-2'>Завършени обекти:</h1>
       </div>
       {/* BIG PHOTO PREVIEW */}
-      <div className='w-full md:w-5/12 flex flex-row'>
-        <div className='w-full relative rounded-lg'>
+      <div className='w-full md:w-5/12 flex flex-row ease-in-out'>
+        <div          
+        className={`w-full h-[300px] relative translate-x-0 rounded-lg`}>        
+         {showNewHouse && <motion.img  
+          initial={{scale: 0}}
+          animate={{scale:1}}
+         
+          className='rounded-xl shadow-teal-900 shadow-xl w-full md:max-h-[350px] lg:max-h-[450px]' src={currentHouse}>
 
-          <img className='rounded-xl shadow-teal-900 shadow-xl w-full md:max-h-[350px] lg:max-h-[450px]' src={currentHouse}></img>
+          </motion.img>}
+          
 
         </div>
       </div>
@@ -51,25 +87,34 @@ const Projects = () => {
         <div className='w-1/12 flex justify-end ml-2 -mr-4'>
           {houseFrom !== 0 &&
             <MdArrowBackIos className=' text-amber-400 cursor-pointer ' size={35}
-              onClick={handleLeftArrowClick}
+              onClick={()=>{
+                animatethe3Houses()
+                handleLeftArrowClick()}}
             />}
         </div>
         {/* Gallery of 3 photos div */}
-        <div className='grid grid-cols-3 gap-1 md:gap-12  lg:gap-32 w-10/12 m-auto rounded-xl'>
+        {animate3Houses && <motion.div 
+          initial={{x: - 100}}
+          animate={{x:0}}
+        className='grid grid-cols-3 gap-1 md:gap-12  lg:gap-32 w-10/12 m-auto rounded-xl'>
           {houses.slice(houseFrom, houseTo).map((house, i) =>
             <div key={i} className='cursor-pointer justify-self-center '
               onClick={() => {
                 setCurrentHouse(house)
+                animateHouse()
 
               }}            >
               <img src={house} className={`object-cover max-h-[60px] md:max-h-[100px] md:h-[160px] lg:max-h-[250px] w-full `} />
             </div>
           )}
-        </div>
+        </motion.div>}
         {/* right arrow div for gallery */}
         <div className='w-1/12 flex justify-start'>
           {houses.length > houseTo && <MdArrowForwardIos className=' text-amber-400 cursor-pointer' size={35}
-            onClick={handleRightArrowClick}
+            onClick={()=>{
+              handleRightArrowClick()
+              animatethe3Houses()
+            }}
           />}
         </div>
 

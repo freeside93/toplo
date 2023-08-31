@@ -35,10 +35,10 @@ function App() {
               onClick={() => { setMenuOpen(false) }}
             />}
             
-            
+            {/* SIDE DRAWER */}
               <div className={`${menuOpen ? 'translate-x-0' : 'translate-x-full' }
                bg-white w-full  h-screen absolute z-30 -top-4 md:-top-4 -right-2 flex flex-col gap-3 items-center cursor-pointer
-                ease-in-out duration-500`}>
+                ease-in-out duration-200`}>
                 <AiOutlineMenuUnfold className='text-amber-400 z-30 mt-2' size={40}
                   onClick={() => { setMenuOpen(false) }}
                 />
