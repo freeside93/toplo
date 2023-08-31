@@ -15,11 +15,13 @@ function App() {
 
   return (
     <div className='bg-[#f5f5f5]'>
-      {/* HEADER */} {menuOpen && <div className='bg-black/50 fixed w-full h-screen z-10 top-0'>
+      {/* BLACK BACKGROUND */}
+      {menuOpen && <div className='bg-black/50 fixed w-full h-screen z-10 top-0'  onClick={() => { setMenuOpen(false) }}>
 
       </div>}
+      {/* HEADER */} 
       <header className="flex flex-row pb-2 mb-1 w-full  align-middle items-center border-b-4 rounded-md p-1 max-h-[80px] border-orange-400">
-        <div className='w-4/12'>
+        <div className='w-4/12 '>
 
           <img className='object-contain w-32' src={toploLogo5} />
         </div>
@@ -32,9 +34,11 @@ function App() {
             {menuOpen && <AiOutlineMenuUnfold className='text-amber-400 z-30 invisible' size={40}
               onClick={() => { setMenuOpen(false) }}
             />}
-            {menuOpen &&
-              // SIDE DRAWER
-              <div className='bg-white w-full  h-screen absolute z-30 -top-8 md:-top-12 -right-2 flex flex-col gap-3 items-center cursor-pointer'>
+            
+            
+              <div className={`${menuOpen ? 'translate-x-0' : 'translate-x-full' }
+               bg-white w-full  h-screen absolute z-30 -top-4 md:-top-4 -right-2 flex flex-col gap-3 items-center cursor-pointer
+                ease-in-out duration-500`}>
                 <AiOutlineMenuUnfold className='text-amber-400 z-30 mt-2' size={40}
                   onClick={() => { setMenuOpen(false) }}
                 />
@@ -63,7 +67,7 @@ function App() {
                   }}
                 >Контакти</p>
 
-              </div>}
+              </div>
 
           </nav>
         </div>
@@ -75,7 +79,7 @@ function App() {
         {currentPage === 'contacts' && <Contacts />}
       </main>
       {/* FOOTER */}
-      <footer className='flex flex-row justify-items-center align-middle border-orange-400 border-b-2 border-t-2 text-sm p-2 r mt-4'>
+      <footer className='flex flex-row justify-items-center align-middle rounded-md border-orange-400 border-b-2 border-t-2 text-sm p-2 r mt-4'>
         <div className='w-2/12 m-auto max-w-[100px] '>
           <img src={reactivLogo} className='cursor-pointer' />
         </div>

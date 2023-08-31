@@ -38,15 +38,15 @@ const Projects = () => {
       <div className='w-full md:w-5/12 flex flex-row'>
         <div className='w-full relative rounded-lg'>
 
-          <img className='rounded-lg shadow-teal-900 shadow-lg w-full md:max-h-[350px] lg:max-h-[450px]' src={currentHouse}></img>
+          <img className='rounded-xl shadow-teal-900 shadow-xl w-full md:max-h-[350px] lg:max-h-[450px]' src={currentHouse}></img>
 
         </div>
       </div>
       {/* PHOTO GALLERY */}
-      <div className='text-xl mt-2 mb-2'>
+      <div className='text-xl mt-4 mb-2'>
         <p>{(houseFrom + 1 === houses.length) ? 'Обект' : 'Обекти'} номер {houseFrom + 1} до {(houseFrom + 1 === houses.length) ? houseFrom + 1 : houseTo}</p>
       </div>
-      <div className='w-full m-auto  flex flex-row m-auto  items-center'>
+      <div className='w-full m-auto  flex flex-row mt-2 items-center'>
         {/* left arrow for gallery */}
         <div className='w-1/12 flex justify-end ml-2 -mr-4'>
           {houseFrom !== 0 &&
@@ -75,7 +75,7 @@ const Projects = () => {
 
       </div>
       <div>
-        <article className='m-auto text-center w-full text-base mt-2'>
+        <article className='m-auto text-center w-full text-base mt-3'>
           Разгледайте снимките, за да се убедите в резултатите от нашата работа!
         </article>
       </div>
