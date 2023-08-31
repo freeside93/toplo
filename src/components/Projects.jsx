@@ -14,68 +14,72 @@ import { MdArrowForwardIos } from 'react-icons/md'
 import { useState } from 'react'
 
 const Projects = () => {
-    const houses = [house9, house8, house1, house4, house5, house6, house7,house3, house2]
-    const [currentHouse, setCurrentHouse] = useState(houses[0])
-    const [houseFrom, setHouseFrom] = useState(0)
-    const [houseTo, setHouseTo] = useState(3)
+  const houses = [house9, house8, house1, house4, house5, house6, house7, house3, house2]
+  const [currentHouse, setCurrentHouse] = useState(houses[0])
+  const [houseFrom, setHouseFrom] = useState(0)
+  const [houseTo, setHouseTo] = useState(3)
 
-    function handleRightArrowClick(){
-        setHouseFrom(prevValues => prevValues + 3)
-        setHouseTo(prevState => prevState + 3)
-    }
+  function handleRightArrowClick() {
+    setHouseFrom(prevValues => prevValues + 3)
+    setHouseTo(prevState => prevState + 3)
+  }
 
-    function handleLeftArrowClick(){
-        setHouseFrom(prevValues => prevValues - 3)
-        setHouseTo(prevState => prevState- 3)
-    }
+  function handleLeftArrowClick() {
+    setHouseFrom(prevValues => prevValues - 3)
+    setHouseTo(prevState => prevState - 3)
+  }
 
-    return (
-        <div className='flex flex-col items-center'>
-        <div >
-            <h1 className='text-orange-500 underline text-2xl decoration-orange-400 mb-2 -mt-4'>Завършени обекти:</h1>
+  return (
+    <div className='flex flex-col items-center'>
+      <div >
+        <h1 className=' text-2xl b-2 -mt-3  mb-2'>Завършени обекти:</h1>
+      </div>
+      {/* BIG PHOTO PREVIEW */}
+      <div className='w-full md:w-5/12 flex flex-row'>
+        <div className='w-full relative rounded-lg'>
+
+          <img className='rounded-lg shadow-teal-900 shadow-lg w-full md:max-h-[350px] lg:max-h-[450px]' src={currentHouse}></img>
+
         </div>
-  {/* BIG PHOTO PREVIEW */ }
-    <div className='w-full md:w-5/12 flex flex-row'>
-        <div className='w-full relative'>
-           
-            <img className='object-contain w-full md:max-h-[350px] lg:max-h-[450px]' src={currentHouse}></img>
-           
+      </div>
+      {/* PHOTO GALLERY */}
+      <div className='text-xl mt-2 mb-2'>
+        <p>{(houseFrom + 1 === houses.length) ? 'Обект' : 'Обекти'} номер {houseFrom + 1} до {(houseFrom + 1 === houses.length) ? houseFrom + 1 : houseTo}</p>
+      </div>
+      <div className='w-full m-auto  flex flex-row m-auto  items-center'>
+        {/* left arrow for gallery */}
+        <div className='w-1/12 flex justify-end ml-2 -mr-4'>
+          {houseFrom !== 0 &&
+            <MdArrowBackIos className=' text-amber-400 cursor-pointer ' size={35}
+              onClick={handleLeftArrowClick}
+            />}
         </div>
-    </div>
-    {/* PHOTO GALLERY */ }
-  <div className='text-md mt-2 mb-2'>
-      <p>{(houseFrom + 1 === houses.length ) ? 'Обект' : 'Обекти' } номер {houseFrom + 1} до {(houseFrom + 1 === houses.length ) ? houseFrom + 1 :houseTo}</p>
-    </div>
-  <div className='w-full mt-1  flex flex-row justify-center items-center'>
-    {/* left arrow for gallery */}
-    <div className='w-1/12 flex '>
-      {houseFrom !== 0 && 
-      <MdArrowBackIos className=' text-orange-500 cursor-pointer' size={35} 
-      onClick={handleLeftArrowClick}
-      
-      />}
-    </div>
-    {/* Gallery of 3 photos div */}
-    <div className='grid grid-cols-3  gap-2 md:gap-12  lg:gap-32 w-10/12 m-auto '>
-      {houses.slice(houseFrom, houseTo).map((house, i) =>
-        <div key={i} className='cursor-pointer justify-self-center '
-          onClick={() => {
-            setCurrentHouse(house)
+        {/* Gallery of 3 photos div */}
+        <div className='grid grid-cols-3 gap-1 md:gap-12  lg:gap-32 w-10/12 m-auto rounded-xl'>
+          {houses.slice(houseFrom, houseTo).map((house, i) =>
+            <div key={i} className='cursor-pointer justify-self-center '
+              onClick={() => {
+                setCurrentHouse(house)
 
-          }}            >
-          <img src={house} className={` max-h-[60px] md:max-h-[100px] md:h-[160px] lg:max-h-[250px] w-full `} />
+              }}            >
+              <img src={house} className={`object-cover max-h-[60px] md:max-h-[100px] md:h-[160px] lg:max-h-[250px] w-full `} />
+            </div>
+          )}
         </div>
-      )}
-    </div>
-    {/* right arrow div for gallery */}
-    <div className='w-1/12 flex'>
-     {houses.length > houseTo && <MdArrowForwardIos className=' text-orange-500 cursor-pointer' size={`35`} 
-        onClick={handleRightArrowClick}
-     />}
-    </div>
+        {/* right arrow div for gallery */}
+        <div className='w-1/12 flex justify-start'>
+          {houses.length > houseTo && <MdArrowForwardIos className=' text-amber-400 cursor-pointer' size={35}
+            onClick={handleRightArrowClick}
+          />}
+        </div>
 
-  </div>
-  </div>
+      </div>
+      <div>
+        <article className='m-auto text-center w-full text-base mt-2'>
+          Разгледайте снимките, за да се убедите в резултатите от нашата работа!
+        </article>
+      </div>
+    </div>
   )
 }
 
