@@ -59,19 +59,19 @@ const Projects = () => {
   }
 
   return (
-    <div className='flex flex-col items-center'>
+    <div className='flex flex-col items-center w-full'>
       <div >
-        <h1 className=' text-2xl b-2 -mt-3  mb-2'>Завършени обекти:</h1>
+        <h1 className='w-full text-2xl b-2 -mt-3  mb-2'>Завършени обекти:</h1>
       </div>
       {/* BIG PHOTO PREVIEW */}
-      <div className='w-full md:w-5/12 flex flex-row ease-in-out'>
+      <div className=' h-[280px] md:max-h-[350px] lg:max-h-[450px] w-full md:w-4/12 flex flex-row ease-in-out justify-center'>
         <div
-          className={`w-full h-[300px] md:h-[350px] relative translate-x-0 rounded-lg`}>
+          className={`w-full  relative translate-x-0 rounded-lg`}>
           {showNewHouse && <motion.img
             initial={{ scale: 0 }}
             animate={{ scale: 1 }}
 
-            className='rounded-xl shadow-teal-900 shadow-xl w-full md:max-h-[350px] lg:max-h-[450px]' src={currentHouse}>
+            className='rounded-xl shadow-teal-900 shadow-lg w-full h-full ' src={currentHouse}>
 
           </motion.img>}
 
@@ -79,11 +79,11 @@ const Projects = () => {
         </div>
       </div>
       {/* PHOTO GALLERY */}
-      <div className='h-[180px] flex flex-col justify-center items-center'>
-        <div className='text-xl mt-4 mb-2'>
+      <div className=' flex flex-col justify-center items-center h-[200px] mt-2 md:h-[240px] md:mt-6'>
+        <div className='text-xl mt-4 mb-2 h-[20px] md:h-[40px]'>
           <p>{(houseFrom + 1 === houses.length) ? 'Обект' : 'Обекти'} номер {houseFrom + 1} до {(houseFrom + 1 === houses.length) ? houseFrom + 1 : houseTo}</p>
         </div>
-        <div className='w-full m-auto  flex flex-row mt-2 items-center'>
+        <div className='w-full m-auto  flex flex-row mt-2 items-center h-[180px] md:h-[220px]'>
           {/* left arrow for gallery */}
           <div className='w-1/12 flex justify-end ml-2 -mr-4'>
             {houseFrom !== 0 &&
@@ -98,7 +98,8 @@ const Projects = () => {
           {animate3Houses && <motion.div
             initial={{ x: - 100 }}
             animate={{ x: 0 }}
-            className='grid grid-cols-3 gap-1 md:gap-12  lg:gap-32 w-10/12 m-auto rounded-xl'>
+            transition={{duration:0.4}}
+            className='grid grid-cols-3 gap-1 md:gap-12  lg:gap-32 w-10/12 m-auto rounded-xl h-[60px] md:h-[160px]'>
             {houses.slice(houseFrom, houseTo).map((house, i) =>
               <div key={i} className='cursor-pointer justify-self-center '
                 onClick={() => {
@@ -106,7 +107,7 @@ const Projects = () => {
                   animateHouse()
 
                 }}            >
-                <img src={house} className={`object-cover max-h-[60px] md:max-h-[100px] md:h-[160px] lg:max-h-[250px] w-full `} />
+                <img src={house} className={`object-cover max-h-[60px] md:max-h-[100px] md:h-[160px] lg:max-h-[250px] w-full active:scale-125`} />
               </div>
             )}
           </motion.div>}
@@ -121,7 +122,7 @@ const Projects = () => {
           </div>
 
         </div>
-        <div>
+        <div className='mt-2 mb-2'>
           <article className='m-auto text-center w-full text-base mt-3'>
             Разгледайте снимките, за да се убедите в резултатите от нашата работа!
           </article>
