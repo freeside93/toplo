@@ -14,7 +14,7 @@ function App() {
   const [menuOpen, setMenuOpen] = useState(false)
 
   return (
-    <div className='bg-[#f5f5f5]'>
+    <div className='bg-gradient-to-b from-zinc-100 via-zinc-200 via-85% to-zinc-600/60'>
       {/* BLACK BACKGROUND */}
       {menuOpen && <div className='bg-black/50 fixed w-full h-screen z-10 top-0'  onClick={() => { setMenuOpen(false) }}>
 
@@ -80,17 +80,19 @@ function App() {
       </main>
       {/* FOOTER */}
       <footer className='flex flex-row justify-items-center align-middle rounded-md border-orange-400 border-b-2 border-t-2 text-sm p-2 r mt-4'>
-        <div className='w-2/12 m-auto max-w-[100px] '>
-          <img src={reactivLogo} className='cursor-pointer' />
-        </div>
-        <div className='m-auto w-8/12 flex flex-row flex-wrap justify-center text-center items-center'>
-
-          {currentPage === 'projects' && <h1 className=' font-bold italic text-amber-500 mt-2 drop-shadow-md shadow-orange-400'>ЗAЩОТО ТОПЛИНАТА Е УЮТ!</h1>}
-          {currentPage === 'about us' && <h1 className=' font-bold italic text-amber-500 mt-2 drop-shadow-md shadow-orange-400'>ЗAЩОТО ТОПЛИНАТА Е СПОКОЙСТВИЕ!</h1>}
-          {currentPage === 'contacts' && <h1 className=' font-bold italic text-amber-500 mt-2 drop-shadow-md shadow-orange-400'>ЗAЩОТО ТОПЛИНАТА Е КОМФОРТ!</h1>}
+        {/* <div className='w-2/12 m-auto max-w-[100px] '>
+          <img src={reactivLogo} className='cursor-pointer' /> 
+        </div> */}
+        <div className='m-auto w-10/12 flex flex-col flex-wrap justify-center text-center items-center text-lg mb-2
+        
+        font-bold italic text-amber-400 mt-2 drop-shadow-md shadow-orange-400'>
+          <p className='text-black font-medium'>Обадете ни се, защото :</p>
+          {currentPage === 'projects' && <h1 className=' '>ТОПЛИНАТА Е УЮТ!</h1>}
+          {currentPage === 'about us' && <h1 className=' '>ТОПЛИНАТА Е СПОКОЙСТВИЕ!</h1>}
+          {currentPage === 'contacts' && <h1 className=' '> ТОПЛИНАТА Е КОМФОРТ!</h1>}
         </div>
         <div className='flex flex-row w-2/12 m-auto '>
-          <a href="tel:+359897462492" className='m-auto w-full'><FiPhoneCall className=' text-green-400 border-2 border-green-800 rounded-full p-1 m-auto' size={30} /></a>
+          <a href="tel:+359897444606" className='m-auto w-full'><FiPhoneCall className=' text-green-400 border-2 border-green-400 rounded-full p-1 m-auto' size={35} /></a>
         </div>
       </footer>
     </div>

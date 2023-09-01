@@ -64,7 +64,7 @@ const Projects = () => {
         <h1 className='w-full text-2xl b-2 -mt-3  mb-2'>Завършени обекти:</h1>
       </div>
       {/* BIG PHOTO PREVIEW */}
-      <div className=' h-[280px] md:max-h-[350px] lg:max-h-[450px] w-full md:w-4/12 flex flex-row ease-in-out justify-center'>
+      <div className=' h-[280px] md:max-h-[350px] lg:max-h-[450px] w-full sm:w-6/12 md:w-4/12 flex flex-row ease-in-out justify-center'>
         <div
           className={`w-full  relative translate-x-0 rounded-lg`}>
           {showNewHouse && <motion.img
@@ -95,10 +95,11 @@ const Projects = () => {
               />}
           </div>
           {/* Gallery of 3 photos div */}
+         
           {animate3Houses && <motion.div
             initial={{ x: - 100 }}
             animate={{ x: 0 }}
-            transition={{duration:0.4}}
+            transition={{duration:0.6}}
             className='grid grid-cols-3 gap-1 md:gap-12  lg:gap-32 w-10/12 m-auto rounded-xl h-[60px] md:h-[160px]'>
             {houses.slice(houseFrom, houseTo).map((house, i) =>
               <div key={i} className='cursor-pointer justify-self-center '
@@ -111,6 +112,7 @@ const Projects = () => {
               </div>
             )}
           </motion.div>}
+          
           {/* right arrow div for gallery */}
           <div className='w-1/12 flex justify-start'>
             {houses.length > houseTo && <MdArrowForwardIos className=' text-amber-400 cursor-pointer' size={35}
@@ -123,7 +125,7 @@ const Projects = () => {
 
         </div>
         <div className='mt-2 mb-2'>
-          <article className='m-auto text-center w-full text-base mt-3'>
+          <article className='m-auto text-center w-full text-base md:text-lg mt-3'>
             Разгледайте снимките, за да се убедите в резултатите от нашата работа!
           </article>
         </div>
