@@ -29,18 +29,25 @@ function App() {
           {/* NEW SANDWICH NAVIGATION */}
           <nav className='flex flex-col relative w-8/12 items-end'>
             {!menuOpen && <AiOutlineMenuFold className='text-amber-400 cursor-pointer' size={40}
-              onClick={() => { setMenuOpen(true) }}
+              onClick={() => { 
+                console.log(menuOpen)
+                setMenuOpen(true) }}
             />}
             {menuOpen && <AiOutlineMenuUnfold className='text-amber-400 z-30 invisible' size={40}
-              onClick={() => { setMenuOpen(false) }}
+              onClick={() => { 
+                console.log(menuOpen)
+                setMenuOpen(false) }}
             />}
             
             {/* SIDE DRAWER */}
-              <div className={`${menuOpen ? 'translate-x-0' : 'translate-x-full hidden' }
-               bg-white w-full  h-screen absolute z-30 -top-4 md:-top-4 -right-2 flex flex-col gap-3 items-center cursor-pointer
+            
+              <div className={`${menuOpen ? 'w-full' : 'w-[0px] invisible overflow-hidden' }
+               bg-white   h-screen absolute z-30 -top-4 md:-top-4 -right-2 flex flex-col gap-3 items-center cursor-pointer 
                 ease-in-out duration-200`}>
                 <AiOutlineMenuUnfold className='text-amber-400 z-30 mt-2' size={40}
-                  onClick={() => { setMenuOpen(false) }}
+                  onClick={() => { 
+                    console.log(menuOpen)
+                    setMenuOpen(false) }}
                 />
                 <p className={`${currentPage === 'projects' ? 'underline underline-offset-2 decoration-2 decoration-orange-400 ' : 'hover:scale-105  cursor-pointer'}`}
                   onClick={() => {
@@ -79,22 +86,27 @@ function App() {
         {currentPage === 'contacts' && <Contacts />}
       </main>
       {/* FOOTER */}
-      <footer className='flex flex-row justify-items-center align-middle rounded-md border-orange-400 border-b-2 border-t-2 text-sm p-2 r mt-4'>
+      <footer className='flex flex-row justify-items-center align-middle rounded-md
+      
+      border-orange-400 border-b-2 border-t-2 text-sm p-2 r mt-4 
+      
+      '>
         {/* <div className='w-2/12 m-auto max-w-[100px] '>
           <img src={reactivLogo} className='cursor-pointer' /> 
         </div> */}
         <div className='m-auto w-10/12 flex flex-col flex-wrap justify-center text-center items-center text-lg mb-2
         
         font-bold italic text-amber-400 mt-2 drop-shadow-md shadow-orange-400'>
-          <p className='text-black font-medium'>Обадете ни се, защото :</p>
-          {currentPage === 'projects' && <h1 className=' '>ТОПЛИНАТА Е УЮТ!</h1>}
-          {currentPage === 'about us' && <h1 className=' '>ТОПЛИНАТА Е СПОКОЙСТВИЕ!</h1>}
-          {currentPage === 'contacts' && <h1 className=' '> ТОПЛИНАТА Е КОМФОРТ!</h1>}
+        
+          {currentPage === 'projects' && <h1 className=' '> ЗАЩОТО ТОПЛИНАТА Е УЮТ!</h1>}
+          {currentPage === 'about us' && <h1 className=' '>ЗАЩОТО ТОПЛИНАТА Е СПОКОЙСТВИЕ!</h1>}
+          {currentPage === 'contacts' && <h1 className=' '>ЗАЩОТО ТОПЛИНАТА Е КОМФОРТ!</h1>}
         </div>
         <div className='flex flex-row w-2/12 m-auto '>
           <a href="tel:+359897444606" className='m-auto w-full'><FiPhoneCall className=' text-green-400 border-2 border-green-400 rounded-full p-1 m-auto' size={35} /></a>
         </div>
       </footer>
+      <div className='h-[150px]'></div>
     </div>
   );
 }
