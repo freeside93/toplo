@@ -15,43 +15,52 @@ import { MdArrowForwardIos } from 'react-icons/md'
 import { useState } from 'react'
 
 const Projects = () => {
-  const houses =[{
+  const houses = [{
     houseImg: house8,
     houseName: 'Къща в с. Първенец',
     houseNumber: 1
   },
-  {houseImg: house9,
-  houseName: 'Къща в с.Първенец',
-  houseNumber:2},
-  {houseImg: house3,
-  houseName: 'Къща в гр. Пловдив, кв. Прослав',
-  houseNumber: 3,
-},
-{houseImg: house4,
-houseName: 'Къща в гр. Пловдив, кв. Прослав',
-houseNumber: 4,
-},
-{houseImg: house5,
-houseName: 'Къща в гр. Пловдив, кв. Прослав',
-houseNumber: 5,
-},
-{houseImg: house6,
-houseName: 'Къща в гр. Пловдив, кв. Прослав',
-houseNumber: 6,
-},
-{houseImg: house7,
-houseName: 'Къща в гр. Пловдив, кв. Прослав',
-houseNumber: 7,
-},
-{houseImg: house2,
-houseName: 'Къща в гр. Пловдив, кв. Прослав',
-houseNumber: 8,
-},
-{houseImg: house1,
-houseName: 'Къща в гр. Пловдив, кв. Прослав',
-houseNumber: 9,
-}
-]
+  {
+    houseImg: house9,
+    houseName: 'Къща в с.Първенец',
+    houseNumber: 2
+  },
+  {
+    houseImg: house3,
+    houseName: 'Къща в гр. Пловдив, кв. Прослав',
+    houseNumber: 3,
+  },
+  {
+    houseImg: house4,
+    houseName: 'Къща в гр. Пловдив, кв. Прослав',
+    houseNumber: 4,
+  },
+  {
+    houseImg: house5,
+    houseName: 'Къща в гр. Пловдив, кв. Прослав',
+    houseNumber: 5,
+  },
+  {
+    houseImg: house6,
+    houseName: 'Къща в гр. Пловдив, кв. Прослав',
+    houseNumber: 6,
+  },
+  {
+    houseImg: house7,
+    houseName: 'Къща в гр. Пловдив, кв. Прослав',
+    houseNumber: 7,
+  },
+  {
+    houseImg: house2,
+    houseName: 'Къща в гр. Пловдив, кв. Прослав',
+    houseNumber: 8,
+  },
+  {
+    houseImg: house1,
+    houseName: 'Къща в гр. Пловдив, кв. Прослав',
+    houseNumber: 9,
+  }
+  ]
   // const houses = [house9, house8, house1, house4, house5, house6, house7, house3, house2]
   const [currentHouse, setCurrentHouse] = useState(houses[0])
   const [houseFrom, setHouseFrom] = useState(0)
@@ -102,10 +111,10 @@ houseNumber: 9,
       </div>
       {/* BIG PHOTO PREVIEW */}
       <div className=' h-[340px] md:max-h-[350px] lg:max-h-[450px] w-full sm:w-6/12 md:w-4/12 flex flex-col ease-in-out justify-center '>
-      <p className='text-xl text-center'>{currentHouse.houseNumber}</p>
+        <p className='text-xl text-center'>{currentHouse.houseNumber}</p>
         <div
           className={`w-full h-full  translate-x-0 rounded-lg flex flex-col`}>
-           
+
           {showNewHouse && <motion.img
             initial={{ scale: 0 }}
             animate={{ scale: 1 }}
@@ -113,18 +122,18 @@ houseNumber: 9,
             className='rounded-xl object-fill shadow-teal-900 shadow-lg w-full h-full ' src={currentHouse.houseImg}>
 
           </motion.img>}
-        
+
         </div>
         <p className='ml-2 text-lg mb-2 md:hidden'>{currentHouse.houseName}</p>
-          <p className='ml-2 text-lg hidden md:flex'>{currentHouse.houseName}</p>
-      
+        <p className='ml-2 text-lg hidden md:flex'>{currentHouse.houseName}</p>
+
       </div>
       {/* PHOTO GALLERY */}
       <div className=' flex flex-col justify-center items-center h-[160px] mt-2 md:h-[240px] md:mt-6'>
         <div className='text-xl -mb-1'>
           <p>{(houseFrom + 1 === houses.length) ? 'Обект' : 'Обекти'} номер {houseFrom + 1} до {(houseFrom + 1 === houses.length) ? houseFrom + 1 : houseTo}</p>
         </div>
-        <div className='w-full m-auto  flex flex-row mt-0 items-center h-[200px] md:h-[220px]'>
+        <div className='w-full m-auto  flex flex-row mt-0 items-center h-[200px] md:h-[220px] justify-self-center'>
           {/* left arrow for gallery */}
           <div className='w-1/12 flex justify-end ml-2 -mr-4'>
             {houseFrom !== 0 &&
@@ -136,25 +145,25 @@ houseNumber: 9,
               />}
           </div>
           {/* Gallery of 3 photos div */}
-                <div className='w-[325px] md:w-10/12'>
-          {animate3Houses && <motion.div
-            initial={{ x: - 100 }}
-            animate={{ x: 0 }}
-            transition={{duration:0.6}}
-            className='grid grid-cols-3 gap-1 md:gap-12  lg:gap-32 w-10/12 m-auto rounded-xl h-[60px] md:h-[160px]'>
-            {houses.slice(houseFrom, houseTo).map((house, i) =>
-              <div key={i} className='cursor-pointer justify-self-center '
-                onClick={() => {
-                  setCurrentHouse(house)
-                  animateHouse()
+          <div className='w-[330px] sm:w-10/12 md:w-10/12'>
+            {animate3Houses && <motion.div
+              initial={{ x: - 100 }}
+              animate={{ x: 0 }}
+              transition={{ duration: 0.6 }}
+              className='grid grid-cols-3 gap-1 md:gap-12  lg:gap-32 w-10/12 m-auto rounded-xl h-[60px] md:h-[160px]'>
+              {houses.slice(houseFrom, houseTo).map((house, i) =>
+                <div key={i} className='cursor-pointer justify-self-center '
+                  onClick={() => {
+                    setCurrentHouse(house)
+                    animateHouse()
 
-                }}            >
-                <img src={house.houseImg} className={`object-cover max-h-[60px] md:max-h-[100px] md:h-[160px] lg:max-h-[250px] w-full active:scale-125`} />
-              </div>
-            )}
-          </motion.div>}
+                  }}            >
+                  <img src={house.houseImg} className={`object-cover max-h-[60px] md:max-h-[100px] md:h-[160px] lg:max-h-[250px] w-full active:scale-125`} />
+                </div>
+              )}
+            </motion.div>}
           </div>
-          
+
           {/* right arrow div for gallery */}
           <div className='w-1/12 flex justify-start'>
             {houses.length > houseTo && <MdArrowForwardIos className=' text-amber-400 cursor-pointer' size={35}
